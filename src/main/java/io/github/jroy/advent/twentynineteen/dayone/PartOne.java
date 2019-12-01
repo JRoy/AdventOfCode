@@ -1,28 +1,21 @@
 package io.github.jroy.advent.twentynineteen.dayone;
 
+import io.github.jroy.advent.common.Utils;
+
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 public class PartOne {
 
-  public static void main(String[] args) {
-    AtomicInteger totalFuel = new AtomicInteger();
-    try (Stream<String> stream = Files.lines(Paths.get(PartOne.class.getResource("/twentynineteen/dayone.input").toURI()))) {
-      stream.forEach(string -> {
-        try {
-          totalFuel.addAndGet(calculateFuel(Integer.parseInt(string)));
-        } catch (NumberFormatException e) {
-          System.out.println("Invalid Mass: " + string);
-        }
-      });
-    } catch (IOException | URISyntaxException e) {
-      e.printStackTrace();
+  public static void main(String[] args) throws IOException {
+    int totalFuel = 0;
+    for (String str : Utils.readResourceLines("twentynineteen/dayone.input")) {
+      try {
+        totalFuel += calculateFuel(Integer.parseInt(str));
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid Mass: " + str);
+      }
     }
-    System.out.println("Part One Answer: " + totalFuel.get());
+    System.out.println("Part One Answer: " + totalFuel);
   }
 
   /**
