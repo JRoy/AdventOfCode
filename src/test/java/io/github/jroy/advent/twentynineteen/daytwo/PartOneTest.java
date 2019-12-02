@@ -34,7 +34,7 @@ public class PartOneTest {
     assertEquals(Integer.valueOf(9801), result.get(5));
 
     result = PartOne.processIntCode(PartOne.createIntCode("1,1,1,4,99,5,6,0,99"));
-    assertEquals(Integer.valueOf(1), result.get(0));
+    assertEquals(Integer.valueOf(30), result.get(0));
     assertEquals(Integer.valueOf(1), result.get(1));
     assertEquals(Integer.valueOf(1), result.get(2));
     assertEquals(Integer.valueOf(4), result.get(3));
