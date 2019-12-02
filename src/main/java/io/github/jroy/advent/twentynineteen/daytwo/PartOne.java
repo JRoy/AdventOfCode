@@ -11,7 +11,7 @@ import java.util.List;
 public class PartOne {
 
   public static void main(String[] args) throws IOException {
-    System.out.println("Part One Answer: " + processIntCode(createIntCode(Utils.readResourceLines("twentynineteen/daytwo.input").get(0))));
+    System.out.println("Part One Answer: " + processIntCode(createIntCode(Utils.readResourceLines("twentynineteen/daytwo.input").get(0))).get(0));
   }
 
   public static List<Integer> createIntCode(String string) {
