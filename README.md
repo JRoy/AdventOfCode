@@ -9,7 +9,7 @@ You can learn more about the advent of code at [adventofcode.com/](https://adven
 For day one's challenge: calculate the amount of fuel need to lift a given module based 
 on its mass. We are then told that to accomplish this we have to take the module's mass,
 divide it by three, round the quotient down, and then subtract two. This can be expressed
-as `⌊x/3⌋ - 3` where *x* is the given modules mass.
+as `⌊x/3⌋ - 2` where *x* is the given modules mass.
 
 ### Part 1
 For part one we are given an input of numbers of which we should treat as modules. The
