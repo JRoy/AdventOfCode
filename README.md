@@ -83,3 +83,8 @@ and `verb` respectively. Inside these `for` loops I simply cloned the Intcode in
 iteration. Then I would execute the Intcode and if position `1` of the returned Intcode was
 `19690720`, we know we got our desired `noun` and `verb`. Now, all we had to do was the
 equation `100 * noun + verb` to get our answer. 
+
+## Day 3
+I completed this challenge at 4am and am quite tired of it and don't really remember how
+the code the works. Nevertheless, the code is there and it works but Day 3 will not have
+a write up!
