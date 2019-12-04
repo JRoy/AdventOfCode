@@ -55,7 +55,7 @@ and submit the first integer (position zero) as the answer. For my implementatio
 used Apache's Commons-IO FileUtils API to take read the Intcode from the input file. Once
 I then used a helper method I made to convert a string of comma separated integers into an
 `ArrayList` of `Integer` objects. Once I had a list of all the integers in the program, I
-passed them off to another help method, 
+passed them off to another helper method, 
 `public static List<Integer> processIntCode(List<Integer> code)`, which parsed and executed
 the int code. Once it was executed, the method returns the result Intcode. In the
 `processIntCode` method, I first create an create a while loop for an integer iterator
@@ -88,3 +88,51 @@ equation `100 * noun + verb` to get our answer.
 I completed this challenge at 4am and am quite tired of it and don't really remember how
 the code the works. Nevertheless, the code is there and it works but Day 3 will not have
 a write up!
+
+## Day 4
+For day four, we are given the task of writing a password validator and validating a
+range of passwords. This password validator had 4 criteria which was to be within six
+digits, within the range given as input, have two adjacent numbers (like `44` in `123445`),
+and the numbers in the password must either increase or remain the same from left to right.
+
+### Part 1
+For part one, I made a helper method to validate passwords,
+`public static boolean isGoodPassword(int password)`. In this method, I start by defining
+a the variable `lastInt` as `-1`. This variable will store the last integer processed
+by the upcoming `for` loop. Next in this method, I convert `password` argument into a
+string, `pass` and check to make sure it's six digits. After that I define another
+variable, `adjacentDigits`, as false. This variable will ensure that 2 adjacent digits
+are found in the password while iterating on the upcoming `for` loop. After that, I begin
+a `for` loop which iterates over the password char by char:
+`for (char curChar : pass.toCharArray())`. In the loop, the variable `curInt` gets defined
+as `Integer.parseInt(String.valueOf(curChar))` (which just parses the current char as an
+integer). Next I check if `curInt` is less than `lastInt` and if it is, we immediately
+mark the password as bad because this violates the criteria that a password never
+decreases from left to right. Then, the loop checks if `curInt` is equal to `lastInt` and
+if it is, the `adjacentDigits` variable is set to `true`. Finally, at the end of the
+loop, `lastInt` is set equal to `curInt` and the loop iterates over the next number in
+the password.
+
+Now that the `isGoodPassword(int password)` helper method is defined, we can actually
+solve part one. So to start, I again used Apache's Commons-IO FileUtils API to the
+input file and set the variables `min` and `max` to that input split at `-`
+respectively. Additionally, I also define a `goodPasswords` variable as zero to store
+the amount of valid password found in the upcoming `while` loop. Then, I began a
+`while` loop with the following condition: `min != max`. In that `while` loop, I
+check to see if `min` is a good password by using the helper method defined from
+before; If `min` is a good password, the `goodPasswords` variable is incremented by one.
+Regardless, the `min` value is incremented and the `while` loop continues until it hits
+the `max` number. Once it's done, the `goodPasswords` variable has our answer to part
+one!
+
+### Part 2
+For part two, we're told to do basically the same thing as part one but to add one
+more criteria in order for a password to be marked as valid: Said password must have a
+balanced amount of repeated numbers. For example that means `123444` would be invalid
+due to there being three fours while `111122` is valid due to there being four ones.
+To solve this part of the puzzle, we can use all of the code from part one but just
+match each password with a regex, `(?<!(\d)(?=\1))(\d)\2(?!\2)`. This regex will only
+match valid passwords. So we can first use `Pattern#compile` from `java.util.regex.Pattern`
+to compile that regex pattern, then just use `pattern.matcher(password).find()` to see if
+this password matches the regex. Once we add that check in the while loop from part one,
+our answer will once again be in the `goodPasswords` variable!
