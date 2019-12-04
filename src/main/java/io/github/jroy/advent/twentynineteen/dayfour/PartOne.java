@@ -22,7 +22,7 @@ public class PartOne {
   }
 
   public static boolean isGoodPassword(int password) {
-    int lastInt = 0;
+    int lastInt = -1;
     String pass = String.valueOf(password);
     if (pass.length() != 6) {
       return false;
