@@ -13,6 +13,7 @@ public class PartOne {
 
   public static void main(String[] args) throws IOException {
     processIntCode(createIntCode(Utils.readResourceLines("twentynineteen/dayfive.input").get(0)));
+    System.exit(0);
   }
 
   public static List<Integer> createIntCode(String string) {
@@ -73,6 +74,38 @@ public class PartOne {
         code.set(iterator.next(), input);
       } else if (opCode == 4) {
         System.out.println("Output Provided: " + (arg1Immediate ? iterator.next() : code.get(iterator.next())));
+      } else if (opCode == 5) {
+        int arg1 = arg1Immediate ? iterator.next() : code.get(iterator.next());
+        int arg2 = arg2Immediate ? iterator.next() : code.get(iterator.next());
+        if (arg1 == 0) {
+          continue;
+        }
+        iterator.setIndex(arg2);
+      } else if (opCode == 6) {
+        int arg1 = arg1Immediate ? iterator.next() : code.get(iterator.next());
+        int arg2 = arg2Immediate ? iterator.next() : code.get(iterator.next());
+        if (arg1 != 0) {
+          continue;
+        }
+        iterator.setIndex(arg2);
+      } else if (opCode == 7) {
+        int arg1 = arg1Immediate ? iterator.next() : code.get(iterator.next());
+        int arg2 = arg2Immediate ? iterator.next() : code.get(iterator.next());
+        int result = arg1 < arg2 ? 1 : 0;
+        if (arg3Immediate) {
+          iterator.replaceNext(result);
+          continue;
+        }
+        code.set(iterator.next(), result);
+      } else if (opCode == 8) {
+        @SuppressWarnings("DuplicatedCode") int arg1 = arg1Immediate ? iterator.next() : code.get(iterator.next());
+        int arg2 = arg2Immediate ? iterator.next() : code.get(iterator.next());
+        int result = arg1 == arg2 ? 1 : 0;
+        if (arg3Immediate) {
+          iterator.replaceNext(result);
+          continue;
+        }
+        code.set(iterator.next(), result);
       } else if (opCode == 99) {
         return;
       } else {
