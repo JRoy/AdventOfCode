@@ -11,6 +11,7 @@ repositories {
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
     testImplementation 'junit:junit:4.12'
 }
 
