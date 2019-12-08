@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PartOne {
 
-  public static final int LAYER_SIZE = 25 * 6;
+  private static final int LAYER_SIZE = 25 * 6;
 
   public static void main(String[] args) throws IOException {
     List<String> layers = Utils.splitEqually(Utils.readResourceLines("twentynineteen/dayeight.input").get(0), LAYER_SIZE);
