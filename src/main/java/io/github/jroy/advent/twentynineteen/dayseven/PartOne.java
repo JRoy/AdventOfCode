@@ -2,6 +2,7 @@ package io.github.jroy.advent.twentynineteen.dayseven;
 
 import io.github.jroy.advent.common.IndexedIterator;
 import io.github.jroy.advent.common.Utils;
+import org.apache.commons.collections4.iterators.PermutationIterator;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -15,39 +16,20 @@ public class PartOne {
   public static void main(String[] args) throws IOException {
     int answer = 0;
     List<Integer> code = io.github.jroy.advent.twentynineteen.dayfive.PartOne.createIntCode(Utils.readResourceLines("twentynineteen/dayseven.input").get(0));
-    for (int a = 0; a < 5; a++) {
-      for (int b = 0; b < 5; b++) {
-        for (int c = 0; c < 5; c++) {
-          for (int d = 0; d < 5; d++) {
-            for (int e = 0; e < 5; e++) {
-              if (isValidPhaseSettings(a, b, c, d, e)) {
-                int result = processIntCode(code, e,
-                    processIntCode(code, d,
-                        processIntCode(code, c,
-                            processIntCode(code, b,
-                                processIntCode(code, a, 0).get(0)).get(0)).get(0)).get(0)).get(0);
-                if (result > answer) {
-                  answer = result;
-                }
-              }
-            }
-          }
-        }
+    PermutationIterator<Integer> perms = new PermutationIterator<>(Arrays.asList(0, 1, 2, 3, 4));
+    while (perms.hasNext()) {
+      List<Integer> curPerm = perms.next();
+      int result = processIntCode(code, curPerm.get(4),
+          processIntCode(code, curPerm.get(3),
+              processIntCode(code, curPerm.get(2),
+                  processIntCode(code, curPerm.get(1),
+                      processIntCode(code, curPerm.get(0), 0).get(0)).get(0)).get(0)).get(0)).get(0);
+      if (result > answer) {
+        answer = result;
       }
     }
     System.out.println("Part One Answer: " + answer);
     System.exit(0);
-  }
-
-  public static boolean isValidPhaseSettings(Integer... phases) {
-    List<Integer> used = new ArrayList<>();
-    for (int phase : phases) {
-      if (used.contains(phase)) {
-        return false;
-      }
-      used.add(phase);
-    }
-    return true;
   }
 
   public static List<Integer> processIntCode(List<Integer> code, Integer... inputs) throws InvalidObjectException {
