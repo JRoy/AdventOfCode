@@ -1,23 +1,25 @@
 package io.github.jroy.advent.twentynineteen.daytwo;
 
 import io.github.jroy.advent.common.Utils;
+import io.github.jroy.advent.common.intcode.Intcode;
 
 import java.io.IOException;
 import java.io.InvalidObjectException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class PartTwo {
 
   public static void main(String[] args) throws IOException {
-    List<Integer> code = PartOne.createIntCode(Utils.readResourceLines("twentynineteen/daytwo.input").get(0));
-    for (int noun = 0; noun < 100; ++noun) {
-      for (int verb = 0; verb < 100; ++verb) {
-        List<Integer> caseCode = new ArrayList<>(code);
-        caseCode.set(1, noun);
-        caseCode.set(2, verb);
+    HashMap<Long, Long> code = Intcode.createIntCode(Utils.readResourceLines("twentynineteen/daytwo.input").get(0));
+    for (long noun = 0L; noun < 100; ++noun) {
+      for (long verb = 0L; verb < 100; ++verb) {
+        HashMap<Long, Long> caseCode = new HashMap<>(code);
+        caseCode.put(1L, noun);
+        caseCode.put(2L, verb);
         try {
-          if (PartOne.processIntCode(caseCode).get(0).equals(19690720)) {
+          Intcode intcode = new Intcode(caseCode);
+          intcode.execute();
+          if (intcode.getCode().get(0L).equals(19690720L)) {
             System.out.println("Part Two Answer: " + (100 * noun + verb));
             System.exit(0);
           }

@@ -5,10 +5,10 @@ import io.github.jroy.advent.common.intcode.Intcode;
 
 import java.io.IOException;
 
-public class PartOne {
+public class PartTwo {
 
   public static void main(String[] args) throws IOException {
-    System.out.println("Part One Answer: " + new Intcode(Utils.readResourceLines("twentynineteen/dayfive.input").get(0)).execute(1L).get(9));
+    System.out.println("Part Two Answer: " + new Intcode(Utils.readResourceLines("twentynineteen/dayfive.input").get(0)).execute(5L).get(0));
     System.exit(0);
   }
 }
