@@ -1,4 +1,4 @@
-package io.github.jroy.advent.twentynineteen.daythree;
+package io.github.jroy.advent.common;
 
 import java.util.Objects;
 
@@ -34,6 +34,10 @@ public class OrderedPair {
 
     return getX() == other.getX() && getY() == other.getY();
   }
+
+//  public double distance() {
+//    return Math.sqrt()
+//  }
 
   @Override
   public int hashCode() {

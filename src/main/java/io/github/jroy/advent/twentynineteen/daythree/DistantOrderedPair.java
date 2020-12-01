@@ -1,5 +1,7 @@
 package io.github.jroy.advent.twentynineteen.daythree;
 
+import io.github.jroy.advent.common.OrderedPair;
+
 public class DistantOrderedPair {
 
   private final OrderedPair pair;

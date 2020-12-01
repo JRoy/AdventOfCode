@@ -1,5 +1,6 @@
 package io.github.jroy.advent.twentynineteen.daythree;
 
+import io.github.jroy.advent.common.OrderedPair;
 import org.junit.Test;
 
 import java.util.List;

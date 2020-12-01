@@ -1,5 +1,6 @@
 package io.github.jroy.advent.twentynineteen.daythree;
 
+import io.github.jroy.advent.common.OrderedPair;
 import io.github.jroy.advent.common.Utils;
 
 import java.io.IOException;
