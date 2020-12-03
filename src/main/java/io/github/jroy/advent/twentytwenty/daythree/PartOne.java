@@ -12,7 +12,7 @@ public class PartOne {
     System.out.println("Solution: " + getHitTrees(Utils.getDayInput(), 3, 1));
   }
 
-  public static int getHitTrees(List<String> input, int xOffset, int yOffset) {
+  public static long getHitTrees(List<String> input, int xOffset, int yOffset) {
     Graph graph = new Graph(input);
     int x = 0;
     int y = 0;
