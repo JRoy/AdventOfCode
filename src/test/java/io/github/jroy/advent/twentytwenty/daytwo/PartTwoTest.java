@@ -1,6 +1,5 @@
-package io.github.jroy.advent.twentytwenty.dayone;
+package io.github.jroy.advent.twentytwenty.daytwo;
 
-import io.github.jroy.advent.twentytwenty.daytwo.PartTwo;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
