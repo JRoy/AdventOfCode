@@ -21,6 +21,10 @@ public class Passport {
     keys.put(key, value);
   }
 
+  public String get(String key) {
+    return keys.get(key);
+  }
+
   public boolean isValid() {
     for (Map.Entry<String, String> entry : keys.entrySet()) {
 //      Ignores country id because adventofcode told me fraud is ok
