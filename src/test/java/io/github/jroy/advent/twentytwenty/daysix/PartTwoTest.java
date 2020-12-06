@@ -1,0 +1,32 @@
+package io.github.jroy.advent.twentytwenty.daysix;
+
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
+public class PartTwoTest {
+
+  @Test
+  public void testSampleInput() {
+    List<String> input = List.of(
+        "abc",
+        "",
+        "a",
+        "b",
+        "c",
+        "",
+        "ab",
+        "ac",
+        "",
+        "a",
+        "a",
+        "a",
+        "a",
+        "",
+        "b"
+    );
+    assertEquals(6, PartTwo.countUniqueGroupAnsweredQuestions(input));
+  }
+}
