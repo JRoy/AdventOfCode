@@ -30,6 +30,14 @@ public class Utils {
     throw new IllegalCallerException("Method called out of correct package spec! (Update regex?)");
   }
 
+  public static List<Long> getDayInputLongs() throws IOException {
+    List<Long> list = new ArrayList<>();
+    for (String str : getDayInput()) {
+      list.add(Long.parseLong(str.trim()));
+    }
+    return list;
+  }
+
   /**
    * https://stackoverflow.com/a/3760193
    */
