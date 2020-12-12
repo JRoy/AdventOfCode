@@ -1,7 +1,7 @@
 package io.github.jroy.advent.twentytwenty.daythree;
 
 import io.github.jroy.advent.common.Utils;
-import io.github.jroy.advent.common.graph.Graph;
+import io.github.jroy.advent.common.graph.RefillingGraph;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ public class PartOne {
   }
 
   public static long getHitTrees(List<String> input, int xOffset, int yOffset) {
-    Graph graph = new Graph(input);
+    RefillingGraph graph = new RefillingGraph(input);
     int x = 0;
     int y = 0;
     int hit = 0;
