@@ -26,7 +26,7 @@ public class PartOneTest {
     StandardGraph graph = new StandardGraph(input);
     int modifications = -1;
     while (modifications != 0) {
-      modifications = PartOne.applyMutation(graph);
+      modifications = PartOne.applyMutation(graph, 4, false);
     }
     assertEquals(37, PartOne.countOccupied(graph));
   }

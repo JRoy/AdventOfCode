@@ -44,6 +44,14 @@ public class StandardGraph {
     return new StandardGraph(graphMap.values());
   }
 
+  public void printGraph() {
+    System.out.println("=".repeat(graphMap.size() > 0 ? graphMap.get(0).length() : 1));
+    for (String line : graphMap.values()) {
+      System.out.println(line);
+    }
+    System.out.println("=".repeat(graphMap.size() > 0 ? graphMap.get(0).length() : 1));
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

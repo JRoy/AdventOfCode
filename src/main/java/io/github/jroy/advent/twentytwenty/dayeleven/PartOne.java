@@ -11,12 +11,12 @@ public class PartOne {
     StandardGraph graph = new StandardGraph(Utils.getDayInput());
     int modifications = -1;
     while (modifications != 0) {
-      modifications = PartOne.applyMutation(graph);
+      modifications = PartOne.applyMutation(graph, 4, false);
     }
     System.out.println("Solution: " + PartOne.countOccupied(graph));
   }
 
-  public static int applyMutation(StandardGraph graph) {
+  public static int applyMutation(StandardGraph graph, int crowdCapacity, boolean useRaytracing) {
     StandardGraph clone = graph.cloneGraph(); //Base decisions on clone because the operation applies simultaneously.
     
     int y = 0;
@@ -29,14 +29,14 @@ public class PartOne {
           continue;
         }
 
-        int adj = countAdj(x, y, clone, '#');
+        int adj = useRaytracing ? PartTwo.countAdjRay(x, y, clone) : countAdj(x, y, clone, '#');
         if (curChar == 'L') {
           if (adj == 0) {
             graph.setCharAt(x, y, '#');
             modifications++;
           }
         } else if (curChar == '#') {
-          if (adj >= 4) {
+          if (adj >= crowdCapacity) {
             graph.setCharAt(x, y, 'L');
             modifications++;
           }
