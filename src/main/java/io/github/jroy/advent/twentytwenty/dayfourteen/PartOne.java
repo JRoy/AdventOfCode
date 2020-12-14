@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class PartOne {
 
-  private final static Pattern MEM_PATTERN = Pattern.compile("mem\\[(\\d+)] = (\\d+)");
+  protected final static Pattern MEM_PATTERN = Pattern.compile("mem\\[(\\d+)] = (\\d+)");
 
   public static void main(String[] args) throws IOException {
     System.out.println("Solution: " + initializeProgram(Utils.getDayInput()));
